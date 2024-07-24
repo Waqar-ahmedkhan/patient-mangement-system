@@ -1,7 +1,11 @@
 
 function PatientForm() {
   return (
-    <div>PatientForm</div>
+    <div>
+      <h1>Patient Form</h1>
+      {/* Add form fields */}
+      {/* Submit button */}
+    </div>
   )
 }
 
