@@ -1,4 +1,6 @@
-import PatientForm from "@/components/forms/PatientForm";
+"use client"
+
+import { PatientForm } from "@/components/forms/PatientForm";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,6 +8,7 @@ export default function Home() {
   return (
     <>
       <div className="min-w-screen min-h-screen grid md:grid-cols-2">
+        {/* Todo: OTP verfication || passkey verfication */}
         <section className="remove-scrollbar container my-auto">
           <div className="sub-container max-w-[456px] my-auto">
             <div className="flex items-center gap-2 mb-10">
@@ -19,7 +22,7 @@ export default function Home() {
               <h1 className="text-xl font-bold text-white">CarePulse</h1>
             </div>
 
-            <PatientForm />
+            <PatientForm/>
 
             <div className="mt-32 flex gap-40">
               <div className="text-regular-14 flex justify-items-end  text-zinc-400 hover:text-zinc-300 xl:text-left">
