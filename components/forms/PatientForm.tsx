@@ -15,22 +15,21 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { UserValidationForm } from "@/lib/Validation"
 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-})
 
 export function PatientForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof UserValidationForm>>({
+
+ resolver: zodResolver(UserValidationForm),
     defaultValues: {
       username: "",
+      email: "",
+      number: "",
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof UserValidationForm>) {
     // Do something with the form values.
     // This will be type-safe and validated.
     console.log(values)
@@ -38,7 +37,12 @@ export function PatientForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
+    <section className="mb-8 space-y-4">
+      <h1 className="header">Hi there, ....  👋</h1>
+      <p className="text-dark-700">Get Start with Appointment</p>
+
+    </section>
         <FormField
           control={form.control}
           name="username"
@@ -47,6 +51,38 @@ export function PatientForm() {
               <FormLabel>Username</FormLabel>
               <FormControl>
                 <Input placeholder="username" {...field} />
+              </FormControl>
+              <FormDescription>
+                This is your public display name.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="Email" {...field} />
+              </FormControl>
+              <FormDescription>
+                This is your email ? 
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Number</FormLabel>
+              <FormControl>
+                <Input placeholder="Password" {...field} />
               </FormControl>
               <FormDescription>
                 This is your public display name.
