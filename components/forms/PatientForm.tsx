@@ -38,7 +38,7 @@ export function PatientForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
-    <section className="mb-8 space-y-4">
+    <section className="mb-4 space-y-4">
       <h1 className="header">Hi there, ....  👋</h1>
       <p className="text-dark-700">Get Start with Appointment</p>
 
@@ -77,12 +77,12 @@ export function PatientForm() {
         />
         <FormField
           control={form.control}
-          name="password"
+          name="number"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Number</FormLabel>
               <FormControl>
-                <Input placeholder="Password" {...field} />
+                <Input placeholder="Number" {...field} />
               </FormControl>
               <FormDescription>
                 This is your public display name.

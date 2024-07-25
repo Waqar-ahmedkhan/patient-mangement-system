@@ -11,12 +11,12 @@ export default function Home() {
         {/* Todo: OTP verfication || passkey verfication */}
         <section className="remove-scrollbar container my-auto">
           <div className="sub-container max-w-[456px] my-auto">
-            <div className="flex items-center gap-2 mb-10">
+            <div className="flex items-center gap-2 mb-8">
               <Image
                 src="/Logomark.png"
                 alt="patient logo"
-                width={40}
-                height={40}
+                width={50}
+                height={50}
                 className="w-fit h-10"
               />
               <h1 className="text-xl font-bold text-white">CarePulse</h1>
@@ -24,7 +24,7 @@ export default function Home() {
 
             <PatientForm/>
 
-            <div className="mt-32 flex gap-40">
+            <div className="mt-10 flex gap-40">
               <div className="text-regular-14 flex justify-items-end  text-zinc-400 hover:text-zinc-300 xl:text-left">
                 ©carepulse 2024
               </div>
