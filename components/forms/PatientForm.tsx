@@ -91,7 +91,7 @@ export function PatientForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="shad-primary-btn w-full">Submit</Button>
       </form>
     </Form>
   )

@@ -35,7 +35,7 @@ export default function Home() {
           </div>
 
         </section>
-        <div className="w-70% h-full ">
+        <div className="w-70% min-h-full ">
            <Image src="/image.png" alt="image" width={500} height={500} className="w-[760px] rounded-[24px] h-screen" />
             </div>
       </div>
