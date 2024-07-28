@@ -5,20 +5,25 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+import { Form } from "@/components/ui/form"
+ 
 import { UserValidationForm } from "@/lib/Validation"
+import CustomForm from "../CustomForm"
+
+
+
+export enum FormFieldType {
+  INPUT = "input",
+  Textarea = "textarea",
+   Phone_Number = "phone_number",
+   
+  
+
+}
 
 
 export function PatientForm() {
+
   const form = useForm<z.infer<typeof UserValidationForm>>({
 
  resolver: zodResolver(UserValidationForm),
@@ -43,54 +48,18 @@ export function PatientForm() {
       <p className="text-dark-700">Get Start with Appointment</p>
 
     </section>
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="username" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your email ? 
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="number"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Number</FormLabel>
-              <FormControl>
-                <Input placeholder="Number" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+       
+    <CustomForm 
+        control={form.control} 
+        fieldType={FormFieldType.INPUT}
+        name={"username"}
+        label={"Full Name"}
+        placeholder={"Enter your Full Name"}
+        iconSrc={"/assets/icons/img.png"}
+        iconalt={"icon"}
+
+
+                /> 
         <Button type="submit" className="shad-primary-btn w-full">Submit</Button>
       </form>
     </Form>
