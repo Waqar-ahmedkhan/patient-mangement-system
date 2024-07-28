@@ -14,8 +14,13 @@ import CustomForm from "../CustomForm"
 
 export enum FormFieldType {
   INPUT = "input",
-  Textarea = "textarea",
-   Phone_Number = "phone_number",
+  TEXTAREA = "textarea",
+   PHONE_INPUT = "phoneInput",
+   CHECKBOX= "checkbox",
+   DATE_PICKER= "datePicker",
+   SELECT= "select",
+   SKELETON= "skeleton"
+
    
   
 
