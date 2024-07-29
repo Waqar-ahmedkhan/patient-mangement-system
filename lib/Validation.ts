@@ -1,12 +1,12 @@
- import { z } from "zod"
+ import { z } from "zod";
 
-export const UserValidationForm  = z.object({
-  username: z.string().min(2, { message: "Username must be at least 2 characters." }),
-  email: z.string().email({ message: "Invalid email address." }),
-  number: z.string().min(10, { message: 'Must be a valid mobile number' }).max(11, { message: 'Must be a valid mobile number' }),
-
-})
-
-export const PatientValidationForm = z.object({
-
-})
+ export const UserValidationForm = z.object({
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name must be at most 50 characters"),
+  email: z.string().email("Invalid email address"),
+  phone: z
+    .string()
+    .refine((phone) => /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
+});

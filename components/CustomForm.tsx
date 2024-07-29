@@ -12,6 +12,11 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { FormFieldType } from "./forms/PatientForm";
 
+
+
+
+
+type E164Number = any
  interface  CustomProps {
     control: Control<any>,
     fieldType: FormFieldType,
@@ -52,7 +57,13 @@ import { FormFieldType } from "./forms/PatientForm";
          return (
            <FormControl>
             <PhoneInput
-                  defaultCountry="Pak"
+                  defaultCountry="US"
+                  placeholder={placeholder}
+                  international
+                  withCountryCallingCode
+                  value={field.value}
+                  onChange={field.onChange as E164Number | undefined}
+                  className="input-phone"
                    />
            </FormControl>
          )       

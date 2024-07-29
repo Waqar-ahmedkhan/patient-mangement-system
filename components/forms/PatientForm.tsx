@@ -4,11 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
- 
+
 import { UserValidationForm } from "@/lib/Validation"
+import { useState } from "react"
 import CustomForm from "../CustomForm"
+import SubmitButton from "../SubmitButton"
 
 
 
@@ -28,21 +29,21 @@ export enum FormFieldType {
 
 
 export function PatientForm() {
+  const [isloading, setisloading]= useState(false);
 
   const form = useForm<z.infer<typeof UserValidationForm>>({
 
  resolver: zodResolver(UserValidationForm),
     defaultValues: {
-      username: "",
+      name: "",
       email: "",
-      number: "",
+       phone: "",
     },
   })
 
   function onSubmit(values: z.infer<typeof UserValidationForm>) {
-    // Do something with the form values.
-    // This will be type-safe and validated.
-    console.log(values)
+   setisloading(true)
+   
   }
 
   return (
@@ -78,11 +79,12 @@ export function PatientForm() {
         fieldType={FormFieldType.PHONE_INPUT}
         name={"PHONE"}
         label={"PHONE"}
-        placeholder={"3165470110"}
+        placeholder={"316-5470110"}
         iconSrc={"/PHONE.svg"}
         iconAlt={"icon"}
                     /> 
-        <Button type="submit" className="shad-primary-btn w-full">Submit</Button>
+        {/* <Button type="submit" className="shad-primary-btn w-full">Submit</Button> */}
+        <SubmitButton isLoading={isloading} > Get Started </SubmitButton>
       </form>
     </Form>
   )
