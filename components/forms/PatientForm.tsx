@@ -60,8 +60,8 @@ export function PatientForm() {
         name={"username"}
         label={"Full Name"}
         placeholder={"Enter your Full Name"}
-        iconSrc={"/assets/icons/img.png"}
-        iconalt={"icon"}
+        iconSrc={"/nameicon.svg"}
+        iconAlt={"icon"}
 
 
                 /> 
