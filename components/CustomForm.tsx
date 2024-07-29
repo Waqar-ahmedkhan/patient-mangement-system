@@ -3,10 +3,13 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel
+  FormLabel,
+  FormMessage
 } from "@/components/ui/form";
 import Image from "next/image";
 import { Control } from "react-hook-form";
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 import { FormFieldType } from "./forms/PatientForm";
 
  interface  CustomProps {
@@ -27,7 +30,7 @@ import { FormFieldType } from "./forms/PatientForm";
     switch (fieldType)  {
       case FormFieldType.INPUT: 
       return (
-         <div className="flex rounded-md border ml-2 border-dark-500 bg-dark-400">
+         <div className="flex rounded-md border  border-dark-500 bg-dark-400">
           {iconSrc && (
             <Image
               src={iconSrc}
@@ -41,15 +44,18 @@ import { FormFieldType } from "./forms/PatientForm";
           <FormControl>
             <input  placeholder={placeholder}
             {...field}
-           className="shad-input border-0  flex-1" />
+           className="shad-input border-0 flex-1 pl-2" />
           </FormControl>
           </div>
       )
-        
-
-    
-      default:
-        break;
+    case FormFieldType.PHONE_INPUT:
+         return (
+           <FormControl>
+            <PhoneInput
+                  defaultCountry="Pak"
+                   />
+           </FormControl>
+         )       
     }
 
 
@@ -67,12 +73,12 @@ function CustomForm(  props :  CustomProps ) {
     render={({ field }) => (
       <FormItem className="flex-1 ">
         {fieldType !== FormFieldType.CHECKBOX && label && (
-            <FormLabel className="">{label}</FormLabel>
+            <FormLabel className="shad-input-label">{label}</FormLabel>
           )}
 
         <RenderField  field={field} props={props} />
 
-        
+        <FormMessage className="shad-error" />
       
       </FormItem>
     )}

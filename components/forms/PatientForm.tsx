@@ -60,11 +60,28 @@ export function PatientForm() {
         name={"username"}
         label={"Full Name"}
         placeholder={"Enter your Full Name"}
-        iconSrc={"/nameicon.svg"}
+        iconSrc={"/name.svg"}
         iconAlt={"icon"}
-
-
-                /> 
+                    /> 
+       
+    <CustomForm 
+        control={form.control} 
+        fieldType={FormFieldType.INPUT}
+        name={"Email"}
+        label={"Email"}
+        placeholder={"vickikhan@gmail.com"}
+        iconSrc={"/email.svg"}
+        iconAlt={"icon"}
+                    /> 
+    <CustomForm 
+        control={form.control} 
+        fieldType={FormFieldType.PHONE_INPUT}
+        name={"PHONE"}
+        label={"PHONE"}
+        placeholder={"3165470110"}
+        iconSrc={"/PHONE.svg"}
+        iconAlt={"icon"}
+                    /> 
         <Button type="submit" className="shad-primary-btn w-full">Submit</Button>
       </form>
     </Form>
