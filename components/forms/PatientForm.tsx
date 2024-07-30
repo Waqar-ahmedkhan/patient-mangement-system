@@ -7,6 +7,7 @@ import { z } from "zod"
 import { Form } from "@/components/ui/form"
 
 import { UserValidationForm } from "@/lib/Validation"
+import { useRouter } from "next/router"
 import { useState } from "react"
 import CustomForm from "../CustomForm"
 import SubmitButton from "../SubmitButton"
@@ -16,34 +17,42 @@ import SubmitButton from "../SubmitButton"
 export enum FormFieldType {
   INPUT = "input",
   TEXTAREA = "textarea",
-   PHONE_INPUT = "phoneInput",
-   CHECKBOX= "checkbox",
-   DATE_PICKER= "datePicker",
-   SELECT= "select",
-   SKELETON= "skeleton"
-
-   
-  
-
+  PHONE_INPUT = "phoneInput",
+  CHECKBOX= "checkbox",
+  DATE_PICKER= "datePicker",
+  SELECT= "select",
+  SKELETON= "skeleton"
 }
 
 
 export function PatientForm() {
+  const router = useRouter();
   const [isloading, setisloading]= useState(false);
 
   const form = useForm<z.infer<typeof UserValidationForm>>({
 
- resolver: zodResolver(UserValidationForm),
+  resolver: zodResolver(UserValidationForm),
     defaultValues: {
       name: "",
       email: "",
-       phone: "",
+      phone: "",
     },
   })
 
-  function onSubmit(values: z.infer<typeof UserValidationForm>) {
-   setisloading(true)
-   
+  function onSubmit({name, email, phone}: z.infer<typeof UserValidationForm>) {
+      setisloading(true)
+try {
+  // const  userData =  {name, email,  phone }
+  //  const user = await CreateUser(userData);
+
+  //  if(user)  router.push(`/patient/${user.$id}/register`)
+
+} catch (e){
+  console.log(e)
+  return (
+  error: "its have error  onSubmit"
+)
+}
   }
 
   return (
@@ -63,8 +72,8 @@ export function PatientForm() {
         placeholder={"Enter your Full Name"}
         iconSrc={"/name.svg"}
         iconAlt={"icon"}
-                    /> 
-       
+                    />
+  
     <CustomForm 
         control={form.control} 
         fieldType={FormFieldType.INPUT}
@@ -73,7 +82,7 @@ export function PatientForm() {
         placeholder={"vickikhan@gmail.com"}
         iconSrc={"/email.svg"}
         iconAlt={"icon"}
-                    /> 
+                    />
     <CustomForm 
         control={form.control} 
         fieldType={FormFieldType.PHONE_INPUT}
@@ -82,7 +91,7 @@ export function PatientForm() {
         placeholder={"316-5470110"}
         iconSrc={"/PHONE.svg"}
         iconAlt={"icon"}
-                    /> 
+                    />
         {/* <Button type="submit" className="shad-primary-btn w-full">Submit</Button> */}
         <SubmitButton isLoading={isloading} > Get Started </SubmitButton>
       </form>
